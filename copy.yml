@@ -1,0 +1,22 @@
+---
+- name: My playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: Installing package
+      yum:
+        name: httpd
+        state: present
+      notify: start httpd
+
+    - name: start httpd
+      service:
+        name: httpd
+        state: started
+
+    - name: Creating file
+      copy:
+        src: /home/ansadmin/yml_script/index.html
+        dest: /var/www/html/
+        mode: 0644
+

@@ -1,0 +1,16 @@
+---
+- name: This script is for deleting group and user
+  hosts: all
+  become: true
+  tasks:
+
+    - name: Deleting user
+      user:
+        name: asim 
+        state: absent
+
+    - name: Deleting group
+      group:
+        name: webadmin
+        state: absent
+

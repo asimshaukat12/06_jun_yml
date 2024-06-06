@@ -1,0 +1,14 @@
+---
+- name : "This playbook is for creating DIR"
+  hosts : all
+  become : yes
+  tasks :
+  - name : "Creating the directory"
+    file :
+      path : /home/ansadmin/yusuf
+      state : directory
+      mode : 777
+  - name : "Deleting demo file"
+    file :
+      path : /home/ansadmin/demo.txt
+      state : absent

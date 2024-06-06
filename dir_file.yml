@@ -1,0 +1,14 @@
+---
+- name: Managing file and dir
+  hosts: all
+  become: true
+  tasks:
+
+    - name: Creating directory
+      file:
+        path: /home/ansadmin/etc
+        mode: "0777"
+        state: directory
+
+    - name: Creating file
+      command: tail -5 /etc/passwd > /home/ansdmin/etc/passwd

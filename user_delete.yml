@@ -1,0 +1,9 @@
+---
+- name : This playbook is for deleting the user
+  hosts : all
+  become : true
+  tasks :
+  - name : "Deleting Yusuf user"
+    user :
+      name : Asim
+      state : absent

@@ -1,0 +1,13 @@
+---
+- name: My playbook
+  become: yes
+  hosts: all
+  tasks:
+    - name: Creating multiple users
+      user:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - yusuf
+        - neha
+        - azeem

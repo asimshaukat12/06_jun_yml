@@ -1,0 +1,6 @@
+---
+- name: My Playbook
+  hosts: all
+  become: true
+  roles:
+    - setup-httpd-role

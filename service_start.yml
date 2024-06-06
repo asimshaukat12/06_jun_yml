@@ -1,0 +1,14 @@
+---
+- name: "This playbook is used to start service for all the host"
+  hosts : all
+  become: yes
+  tasks:
+   - name: "Starting httpd service for all the hosts"
+     service:
+       name: httpd
+       state: started
+   
+   - name: "starting Network services for all the hosts"
+     service:
+       name: systemd-networkd
+       state: started

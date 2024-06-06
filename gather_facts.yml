@@ -1,0 +1,9 @@
+---
+- name: My playbook
+  hosts: webservers[0]
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: Gathering facts
+      debug:
+        msg: "{{ ansible_facts.date_time }}"

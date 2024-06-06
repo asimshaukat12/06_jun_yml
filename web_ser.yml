@@ -1,0 +1,52 @@
+---
+- name: The playbook is used to create http web server
+  hosts: all
+  become: true
+  tasks: 
+    - name: Installing the http package
+      yum: 
+        name: httpd
+        state: present
+
+    - name: Creating index file
+      file:
+         path: /var/www/html/index.html
+         state: touch
+
+    - name: Inserting line in the file
+      lineinfile:
+         path: /var/www/html/index.html
+         line: "Hi Asim"
+
+    - name: Restarting the httpd service
+      service:
+        name: httpd
+        state: restarted
+
+
+        #---
+#- name: The playbook is used to create http web server
+#  hosts: all
+#  become: true
+#  tasks:
+#    - name: Installing the http package
+#      yum:
+#        name: httpd
+#        state: present
+#
+#    - name: Creating index file
+#      file:
+#        path: /var/www/html/index.html
+#        state: touch
+#
+#    - name: Inserting line in the file
+#      lineinfile:
+#        path: /var/www/html/index.html
+#        line: "Hi Asim"
+#
+#    - name: Restarting the httpd service
+#      service:
+#        name: httpd
+#        state: started
+#          #        enabled: true
+#

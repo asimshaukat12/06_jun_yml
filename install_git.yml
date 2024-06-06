@@ -1,0 +1,10 @@
+---
+- name: My playbook
+  hosts: all
+  become: true
+  tasks:
+    - name: Installing git package
+      yum:
+        name: git*
+        state: present
+      ignore_errors: true

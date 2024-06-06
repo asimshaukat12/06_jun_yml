@@ -1,0 +1,11 @@
+---
+- name: My playbook
+  hosts: all
+  become: yes
+  vars:
+    user: Imran
+  tasks:
+    - name: Ceating user {{ user }}
+      user:
+        name: "{{ user }}"
+        state: present

@@ -1,0 +1,17 @@
+---
+- name: My playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: stopping httpd service
+      service: 
+       name: httpd
+       state: stopped
+
+    - name: uninstalling httpd service
+      yum:
+        name: httpd*
+        state: absent
+
+    - name: Removing index file
+      shell: rm -rf /var/www/html/index.html

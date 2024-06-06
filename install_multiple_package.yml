@@ -1,0 +1,9 @@
+---
+- name: My playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: Installing Multiple packages
+      yum:
+        name: ["which","git","docker","tree"]
+        state: present

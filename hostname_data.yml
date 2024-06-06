@@ -1,0 +1,12 @@
+---
+ - name: Fetching linux command data
+   hosts: all
+   become: yes
+   tasks:
+    - name : fetching Hostname data
+      shell: "hostname -i"
+      register: hostname_output
+
+    - name: Debug
+      debug:
+        msg: "{{ hostname_output.stdout_lines }}"

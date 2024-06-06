@@ -1,0 +1,38 @@
+---
+- name: My playbook
+  hosts: all
+  become: yes
+  tasks:
+
+    - name: Installing java in Redhat
+      yum:
+          name: java
+          state: present
+      when: ansible_os_family== "RedHat"
+
+    - name: Installing java in Debian
+      apt:
+          name: default_jdk
+          state: prsent
+      when: ansible_os_family == "Debian"  
+
+    - name: Downloading tomcat
+      get_url:
+          url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.100/bin/apache-tomcat-8.5.100.tar.gz
+          dest: /opt/
+
+    - name: unarchiving the tar file
+      unarchive:
+          src: /opt/apache-tomcat-8.5.100.tar.gz
+          dest: /opt/
+          remote_src: yes
+
+    - name: Assinging executable perm to file
+      file:
+          path: /opt/apache-tomcat-8.5.100/bin/
+          mode: '0777'
+
+    - name:
+      shell: nohup ./startup.sh
+      args:
+          chdir: /opt/apache-tomcat-8.5.100/bin/
