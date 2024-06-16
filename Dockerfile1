@@ -1,0 +1,7 @@
+FROM ubuntu
+VOLUME [/asim]
+WORKDIR /asim
+RUN date
+COPY yusuf.txt /asim
+ADD asim.tar.gz /asim
+ENV name Asim
